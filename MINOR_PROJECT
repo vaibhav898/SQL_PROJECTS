@@ -1,0 +1,19 @@
+CREATE DATABASE STUDENT1;
+CREATE TABLE STUDENT1 (student_id INT PRIMARY KEY, student_name VARCHAR(100), date_of_birth DATE, email VARCHAR(100), major VARCHAR(50));
+DESC STUDENT1
+Create database courses
+CREATE TABLE Courses (course_id INT PRIMARY KEY, course_name VARCHAR(100), credit_hours INT, instructor VARCHAR(100));
+INSERT INTO STUDENT1 (student_id, student_name, date_of_birth, email, major) VALUES(1, 'sunitha', '1998-07-15', 'sunitha.45@example.com', 'Computer Science'),(2, 'santosh', '1999-03-22', 'santhosh.34@example.com', 'Mathematics'),(3, 'anupama', '2000-11-08', 'anupama2@example.com', 'Computer Science'),(4, 'jockey', '2001-05-01', 'jockey99@example.com', 'Physics');
+INSERT INTO Courses (course_id, course_name, credit_hours, instructor) VALUES (101, 'Database Management', 3, 'Prof. Brown'),(102, 'Programming Fundamentals', 4, 'Prof. White'),(103, 'Calculus I', 4, 'Prof. Smith'),(104, 'Physics I', 4, 'Prof. Johnson');
+SELECT * FROM STUDENT1
+SELECT * FROM COURSES
+SELECT * FROM STUDENT1 WHERE major='Computer Science';
+SELECT * FROM STUDENT1 WHERE date_of_birth < '2000-01-01';
+SELECT * FROM Courses WHERE instructor = 'Prof. Smith';
+SELECT major, COUNT(*) AS total_students FROM STUDENT1 GROUP BY major
+SELECT * FROM Courses ORDER BY credit_hours DESC LIMIT 1;
+SELECT * FROM SELECT * FROM Students ORDER BY date_of_birth ASC LIMIT 1; -- Oldest student
+SELECT * FROM STUDENT1 ORDER BY date_of_birth DESC LIMIT 1; -- Youngest student
+SELECT * FROM STUDENT1 ORDER BY date_of_birth ASC LIMIT 1; -- Oldest student
+SELECT * FROM STUDENT1 WHERE student_id IN (SELECT student_id FROM STUDENT1 WHERE course_id = 101);
+SELECT * FROM Courses WHERE course_id IN (SELECT course_id FROM Courses GROUP BY course_id HAVING COUNT(*) > 2);
